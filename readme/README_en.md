@@ -14,7 +14,7 @@
 
 ## Description
 
-Backend account data model.
+Common information data model.
 
 ## Source Code Repositories
 
