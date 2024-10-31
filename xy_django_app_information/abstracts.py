@@ -23,47 +23,94 @@ class MARegion(models.Model):
     id = models.BigAutoField(primary_key=True)
 
     name = models.CharField(
-        verbose_name=_("名称"), max_length=180, null=True, blank=True
+        verbose_name=_("名称"),
+        max_length=180,
+        null=True,
+        blank=True,
     )
     language = models.CharField(
-        verbose_name=_("语言"), max_length=180, null=True, blank=True
+        verbose_name=_("语言"),
+        max_length=180,
+        null=True,
+        blank=True,
     )
     region = models.CharField(
-        verbose_name=_("地区"), max_length=180, null=True, blank=True
+        verbose_name=_("地区"),
+        max_length=180,
+        null=True,
+        blank=True,
     )
     region_code = models.CharField(
-        verbose_name=_("地区代号"), max_length=180, null=True, blank=True
+        verbose_name=_("地区代号"),
+        max_length=180,
+        null=True,
+        blank=True,
     )
     country = models.CharField(
-        verbose_name=_("国家"), max_length=180, null=True, blank=True
+        verbose_name=_("国家"),
+        max_length=180,
+        null=True,
+        blank=True,
     )
     country_code = models.CharField(
-        verbose_name=_("国家代号"), max_length=180, null=True, blank=True
+        verbose_name=_("国家代号"),
+        max_length=180,
+        null=True,
+        blank=True,
     )
     province = models.CharField(
-        verbose_name=_("省份"), max_length=180, null=True, blank=True
+        verbose_name=_("省份"),
+        max_length=180,
+        null=True,
+        blank=True,
     )
     province_code = models.CharField(
-        verbose_name=_("省份代号"), max_length=180, null=True, blank=True
+        verbose_name=_("省份代号"),
+        max_length=180,
+        null=True,
+        blank=True,
     )
     city = models.CharField(
-        verbose_name=_("城市"), max_length=180, null=True, blank=True
+        verbose_name=_("城市"),
+        max_length=180,
+        null=True,
+        blank=True,
     )
     address = models.CharField(
-        verbose_name=_("地址"), max_length=180, null=True, blank=True
+        verbose_name=_("地址"),
+        max_length=180,
+        null=True,
+        blank=True,
     )
-    town = models.CharField(verbose_name=_("镇"), max_length=180, null=True, blank=True)
+    town = models.CharField(
+        verbose_name=_("镇"),
+        max_length=180,
+        null=True,
+        blank=True,
+    )
     district = models.CharField(
-        verbose_name=_("区域"), max_length=180, null=True, blank=True
+        verbose_name=_("区域"),
+        max_length=180,
+        null=True,
+        blank=True,
     )
     full_address = models.CharField(
-        verbose_name=_("全部地址"), max_length=180, null=True, blank=True
+        verbose_name=_("全部地址"),
+        max_length=180,
+        null=True,
+        blank=True,
     )
     latitude = models.FloatField(
-        verbose_name=_("经度"), max_length=180, null=True, blank=True
+        verbose_name=_("经度"),
+        max_length=180,
+        null=True,
+        blank=True,
     )
     longitude = models.FloatField(
-        verbose_name=_("纬度"), max_length=180, null=True, blank=True
+        verbose_name=_("纬度"),
+        max_length=180,
+        null=True,
+        blank=True,
     )
 
     class Meta:
@@ -72,19 +119,7 @@ class MARegion(models.Model):
         verbose_name_plural = _("地理位置")
 
     def __str__(self):
-        return (
-            str(self.id)
-            + ". "
-            + str(self.name)
-            + " - "
-            + str(self.country)
-            + " - "
-            + str(self.province)
-            + " - "
-            + str(self.city)
-            + " - "
-            + str(self.district)
-        )
+        return f"{self.id}. {self.name} - {self.country} - {self.province} - {self.city} - {self.district}"
 
 
 @gen_upload_to
@@ -97,38 +132,76 @@ class MAVersion(models.Model):
     id = models.BigAutoField(primary_key=True)
 
     name = models.CharField(
-        verbose_name=_("内部版本名称"), max_length=180, null=True, blank=True
+        verbose_name=_("内部版本名称"),
+        max_length=180,
+        null=True,
+        blank=True,
     )
-    detail = models.TextField(verbose_name=_("版本介绍"), null=True, blank=True)
+    detail = models.TextField(
+        verbose_name=_("版本介绍"),
+        null=True,
+        blank=True,
+    )
     version_name = models.CharField(
-        verbose_name=_("对外版本名称"), max_length=180, null=True, blank=True
+        verbose_name=_("对外版本名称"),
+        max_length=180,
+        null=True,
+        blank=True,
     )
-    version_code = models.IntegerField(verbose_name=_("版本编码"), default=1)
+    version_code = models.IntegerField(
+        verbose_name=_("版本编码"),
+        default=1,
+    )
     # Major ：具有相同名称但不同主版本号的程序集不可互换。例如，这适用于对产品的大量重写，这些重写使得无法实现向后兼容性。
     # Minor ：如果两个程序集的名称和主版本号相同，而次版本号不同，这指示显著增强，但照顾到了向后兼容性。例如，这适用于产品的修正版或完全向后兼容的新版本。
     # Build ：内部版本号的不同表示对相同源所作的重新编译。这适合于更改处理器、平台或编译器的情况。
     # Revision ：名称、主版本号和次版本号都相同但修订号不同的程序集应是完全可互换的。这适用于修复以前发布的程序集中的安全漏洞。
     major = models.CharField(
-        verbose_name=_("主版本"), max_length=180, null=False, blank=True, default="0"
+        verbose_name=_("主版本"),
+        max_length=180,
+        null=False,
+        blank=True,
+        default="0",
     )
     minor = models.CharField(
-        verbose_name=_("次版本"), max_length=180, null=True, blank=True
+        verbose_name=_("次版本"),
+        max_length=180,
+        null=True,
+        blank=True,
     )
     revision = models.CharField(
-        verbose_name=_("修正版本"), max_length=180, null=True, blank=True
+        verbose_name=_("修正版本"),
+        max_length=180,
+        null=True,
+        blank=True,
     )
     build = models.CharField(
-        verbose_name=_("构建版本"), max_length=180, null=True, blank=True
+        verbose_name=_("构建版本"),
+        max_length=180,
+        null=True,
+        blank=True,
     )
-    create_date = models.DateTimeField(
-        verbose_name=_("版本创造日期"), null=True, blank=True
+    create_date = (
+        models.DateTimeField(
+            verbose_name=_("版本创造日期"),
+            null=True,
+            blank=True,
+        ),
     )
     end_date = models.DateTimeField(
-        verbose_name=_("结束支持日期"), null=True, blank=True
+        verbose_name=_("结束支持日期"),
+        null=True,
+        blank=True,
     )
-    lts = models.BooleanField(verbose_name=_("长期支持"), null=True, blank=True)
+    lts = models.BooleanField(
+        verbose_name=_("长期支持"),
+        null=True,
+        blank=True,
+    )
     force_update = models.BooleanField(
-        verbose_name=_("强制更新"), null=True, blank=True
+        verbose_name=_("强制更新"),
+        null=True,
+        blank=True,
     )
     identifier = models.UUIDField(
         verbose_name=_("内部标识"),
@@ -179,12 +252,21 @@ class MAVersion(models.Model):
         blank=True,
         choices=version_type_choices,
     )
-    url = models.URLField(verbose_name=_("版本链接"), null=True, blank=True)
+    url = models.URLField(
+        verbose_name=_("版本链接"),
+        null=True,
+        blank=True,
+    )
     download_url = models.URLField(
-        verbose_name=_("版本下载链接"), null=True, blank=True
+        verbose_name=_("版本下载链接"),
+        null=True,
+        blank=True,
     )
     install_package = models.FileField(
-        verbose_name=_("安装包"), upload_to=install_package_pack, null=True, blank=True
+        verbose_name=_("安装包"),
+        upload_to=install_package_pack,
+        null=True,
+        blank=True,
     )
 
     debug = False
@@ -207,14 +289,17 @@ class MAVersion(models.Model):
         verbose_name_plural = _("版本")
 
     def __str__(self):
-        return str(self.id) + ". " + str(self.name)
+        return f"{self.id}. {self.name}"
 
 
 class MADevelopment(models.Model):
     id = models.BigAutoField(primary_key=True)
 
     name = models.CharField(
-        verbose_name=_("名称"), max_length=180, null=True, blank=True
+        verbose_name=_("名称"),
+        max_length=180,
+        null=True,
+        blank=True,
     )
 
     class Meta:
@@ -223,16 +308,22 @@ class MADevelopment(models.Model):
         verbose_name_plural = _("开发信息")
 
     def __str__(self):
-        return str(self.id) + ". " + str(self.name)
+        return f"{self.id}. {self.name}"
 
 
 class MASystem(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(
-        verbose_name=_("名称"), max_length=180, null=True, blank=True
+        verbose_name=_("名称"),
+        max_length=180,
+        null=True,
+        blank=True,
     )
     platform = models.CharField(
-        verbose_name=_("平台"), max_length=180, null=True, blank=True
+        verbose_name=_("平台"),
+        max_length=180,
+        null=True,
+        blank=True,
     )
     identifier = models.UUIDField(
         verbose_name=_("标识"),
@@ -249,7 +340,7 @@ class MASystem(models.Model):
         verbose_name_plural = _("系统")
 
     def __str__(self):
-        return str(self.id) + ". " + str(self.name)
+        return f"{self.id}. {self.name}"
 
 
 # Create your models here.
@@ -257,13 +348,22 @@ class MADevice(models.Model):
     id = models.BigAutoField(primary_key=True)
 
     name = models.CharField(
-        verbose_name=_("名称"), max_length=180, null=True, blank=True
+        verbose_name=_("名称"),
+        max_length=180,
+        null=True,
+        blank=True,
     )
     model = models.CharField(
-        verbose_name=_("设备型号"), max_length=180, null=True, blank=True
+        verbose_name=_("设备型号"),
+        max_length=180,
+        null=True,
+        blank=True,
     )
     brand = models.CharField(
-        verbose_name=_("品牌"), max_length=180, null=True, blank=True
+        verbose_name=_("品牌"),
+        max_length=180,
+        null=True,
+        blank=True,
     )
     identifier = models.UUIDField(
         verbose_name=_("标识"),
@@ -280,4 +380,4 @@ class MADevice(models.Model):
         verbose_name_plural = _("设备")
 
     def __str__(self):
-        return str(self.id) + ". " + str(self.name)
+        return f"{self.id}. {self.name}"
