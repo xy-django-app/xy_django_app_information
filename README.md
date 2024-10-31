@@ -30,16 +30,13 @@ pip install xy_django_app_information
 
 ## 使用
 
-#### 1. 创建Information模块
-> 操作 [样例工程](./samples/xy_web_server_demo/)
 
-```bash
-# bash
-xy_web_server -w django startapp Information
-# Information 模块创建在 source/Runner/Admin/Information 
-```
+##### 1. 直接引入
 
-#### 2. 在样例工程中的[settings.py](./samples/xy_web_server_demo/source/Runner/Admin/xy_web_server_demo/settings.py)设置如下
+- ###### 1. 设置全局配置
+
+在Django项目中的settings.py文件中加入如下配置
+例如: [settings.py](./samples/xy_web_server_demo/source/Runner/Admin/xy_web_server_demo/settings.py)
 
 ```python
 # settings.py
@@ -51,6 +48,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "xy_django_app_information",
     "Demo",
     "Resource",
     "Media",
@@ -59,12 +57,57 @@ INSTALLED_APPS = [
 
 ```
 
-#### 3. 在[Information](./samples/xy_web_server_demo/source/Runner/Admin/Information)模块的[models.py](./samples/xy_web_server_demo/source/Runner/Admin/Information/models.py)文件中加入如下代码
+- ###### 2. 运行项目
+
+```bash
+xy_web_server -w django start
+# 启动工程后访问 http://127.0.0.1:8401/admin 验证信息管理系统
+```
+
+##### 2. 自定义
+
+- ###### 1. 创建Information模块
+
+> 操作 [样例工程](./samples/xy_web_server_demo/)
+
+```bash
+# bash
+xy_web_server -w django startapp Information
+# Information 模块创建在 source/Runner/Admin/Information 
+```
+
+- ###### 2. 设置全局配置
+
+在Django项目中的settings.py文件中加入如下配置
+例如: [settings.py](./samples/xy_web_server_demo/source/Runner/Admin/xy_web_server_demo/settings.py)
+
+```python
+# settings.py
+
+INSTALLED_APPS = [
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "xy_django_app_information",
+    "Demo",
+    "Resource",
+    "Media",
+    "Information",
+]
+
+```
+
+- ###### 3. 在[Information](./samples/xy_web_server_demo/source/Runner/Admin/Information)模块的[models.py](./samples/xy_web_server_demo/source/Runner/Admin/Information/models.py)文件中加入如下代码
 
 ```python
 # models.py
 from xy_django_app_information.abstracts import MARegion
+
 from django.utils.translation import gettext_lazy as _
+
 
 class MRegion(MARegion):
     class Meta:
@@ -74,12 +117,15 @@ class MRegion(MARegion):
 
 ```
 
-#### 4. 在[Information](./samples/xy_web_server_demo/source/Runner/Admin/Information)模块的[admin.py](./samples/xy_web_server_demo/source/Runner/Admin/Information/admin.py)文件中加入如下代码
+- ###### 4. 在[Information](./samples/xy_web_server_demo/source/Runner/Admin/Information)模块的[admin.py](./samples/xy_web_server_demo/source/Runner/Admin/Information/admin.py)文件中加入如下代码
 
 ```python
 # admin.py
 from django.contrib import admin
 from .models import MRegion
+
+# Register your models here.
+
 
 @admin.register(MRegion)
 class ARegion(admin.ModelAdmin):
@@ -87,11 +133,11 @@ class ARegion(admin.ModelAdmin):
 
 ```
 
-#### 5. 运行项目
+- ###### 5. 运行项目
 
 ```bash
 xy_web_server -w django start
-# 启动工程后访问 http://127.0.0.1:8401/admin 验证信息管理系统
+# 启动工程后访问 http://127.0.0.1:8401/admin 验证账户管理系统
 ```
 
 ##### 运行 [样例工程](./samples/xy_web_server_demo)

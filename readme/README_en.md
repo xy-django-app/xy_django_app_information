@@ -30,16 +30,13 @@ pip install xy_django_app_information
 
 ## How to use
 
-#### 1. Create the Information module
-> Operation [Sample Project](../samples/xy_web_server_demo/)
 
-```bash
-# bash
-xy_web_server -w django startapp Information
-# Information Module created in source/Runner/Admin/Information 
-```
+##### 1. Direct import
 
-#### 2. The [settings.py](../samples/xy_web_server_demo/source/Runner/Admin/xy_web_server_demo/settings.py) in the sample project are as follows
+- ###### 1. Setting global configuration
+
+Add the following configuration to the settings.py file in the Django project.  
+For example:[settings.py](../samples/xy_web_server_demo/source/Runner/Admin/xy_web_server_demo/settings.py)
 
 ```python
 # settings.py
@@ -51,6 +48,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "xy_django_app_information",
     "Demo",
     "Resource",
     "Media",
@@ -59,12 +57,57 @@ INSTALLED_APPS = [
 
 ```
 
-#### 3. Add the following code to the [models.py](../samples/xy_web_server_demo/source/Runner/Admin/Information/models.py) file of the [Information](../samples/xy_web_server_demo/source/Runner/Admin/Information) module
+- ###### 2. Run the project
+
+```bash
+xy_web_server -w django start
+# 启动工程后访问 http://127.0.0.1:8401/admin 验证信息管理系统
+```
+
+##### 2. Custom
+
+- ###### 1. Create the Information module
+
+> Operation [Sample Project](../samples/xy_web_server_demo/)
+
+```bash
+# bash
+xy_web_server -w django startapp Information
+# Information 模块创建在 source/Runner/Admin/Information 
+```
+
+- ###### 2. Setting global configuration
+
+Add the following configuration to the settings.py file in the Django project.  
+For example: [settings.py](../samples/xy_web_server_demo/source/Runner/Admin/xy_web_server_demo/settings.py)
+
+```python
+# settings.py
+
+INSTALLED_APPS = [
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "xy_django_app_information",
+    "Demo",
+    "Resource",
+    "Media",
+    "Information",
+]
+
+```
+
+- ###### 3. Add the following code to the [models.py](../samples/xy_web_server_demo/source/Runner/Admin/Information/models.py) of the  [Information](../samples/xy_web_server_demo/source/Runner/Admin/Information) module
 
 ```python
 # models.py
 from xy_django_app_information.abstracts import MARegion
+
 from django.utils.translation import gettext_lazy as _
+
 
 class MRegion(MARegion):
     class Meta:
@@ -74,12 +117,15 @@ class MRegion(MARegion):
 
 ```
 
-#### 4. Add the following code to the[admin.py](../samples/xy_web_server_demo/source/Runner/Admin/Information/admin.py) file of the [Information](../samples/xy_web_server_demo/source/Runner/Admin/Information) module
+- ###### 4. Add the following code to the [admin.py](../samples/xy_web_server_demo/source/Runner/Admin/Information/admin.py) of the [Information](../samples/xy_web_server_demo/source/Runner/Admin/Information) module
 
 ```python
 # admin.py
 from django.contrib import admin
 from .models import MRegion
+
+# Register your models here.
+
 
 @admin.register(MRegion)
 class ARegion(admin.ModelAdmin):
@@ -87,12 +133,13 @@ class ARegion(admin.ModelAdmin):
 
 ```
 
-#### 5. Run the project
+- ###### 5. Run the project
 
 ```bash
 xy_web_server -w django start
-# After starting the project, visit http://127.0.0.1:8401/admin to verify the information management system
+# 启动工程后访问 http://127.0.0.1:8401/admin 验证账户管理系统
 ```
+
 
 ##### Run [Sample Project](../samples/xy_web_server_demo)
 
