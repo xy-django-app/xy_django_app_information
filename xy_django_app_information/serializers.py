@@ -3,10 +3,10 @@
 
 from .models import *
 from rest_framework import viewsets
-from xy_admin_model_serializer.Admin_ModelSerializer import *
+from xy_django_serializer.serializers import Serializer
 
 
-class SRegion(Admin_ModelSerializer):
+class SRegion(Serializer):
     default_value = ""
 
     class Meta:
@@ -19,7 +19,7 @@ class VSRegion(viewsets.ModelViewSet):
     serializer_class = SRegion
 
 
-class SVersion(Admin_ModelSerializer):
+class SVersion(Serializer):
     default_value = ""
 
     class Meta:
@@ -32,7 +32,7 @@ class VSVersion(viewsets.ModelViewSet):
     serializer_class = SVersion
 
 
-class SDevelopment(Admin_ModelSerializer):
+class SDevelopment(Serializer):
     default_value = ""
 
     class Meta:
@@ -45,7 +45,7 @@ class VSDevelopment(viewsets.ModelViewSet):
     serializer_class = SDevelopment
 
 
-class SSystem(Admin_ModelSerializer):
+class SSystem(Serializer):
     default_value = ""
 
     class Meta:
@@ -58,7 +58,7 @@ class VSSystem(viewsets.ModelViewSet):
     serializer_class = SSystem
 
 
-class SDevice(Admin_ModelSerializer):
+class SDevice(Serializer):
     default_value = ""
 
     class Meta:

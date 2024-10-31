@@ -1,17 +1,17 @@
 # -*- coding: UTF-8 -*-
-__author__ = "helios"
+__author__ = "余洋"
 __doc__ = "models"
 """
   * @File    :   models.py
   * @Time    :   2023/05/01 20:24:07
   * @Author  :   helios
   * @Version :   1.0
-  * @Contact :   yuyang.0515@qq.com
+  * @Contact :   yuyangit.0515@qq.com
   * @License :   (C)Copyright 2019-2023, Ship of Ocean
   * @Desc    :   None
 """
 
-
+from django.utils.translation import gettext_lazy as _
 from .abstracts import *
 
 

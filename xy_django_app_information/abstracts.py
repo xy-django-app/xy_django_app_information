@@ -1,12 +1,12 @@
 # -*- coding: UTF-8 -*-
-__author__ = "helios"
+__author__ = "余洋"
 __doc__ = "abstracts"
 """
   * @File    :   abstracts.py
   * @Time    :   2023/05/01 20:23:13
   * @Author  :   helios
   * @Version :   1.0
-  * @Contact :   yuyang.0515@qq.com
+  * @Contact :   yuyangit.0515@qq.com
   * @License :   (C)Copyright 2019-2023, Ship of Ocean
   * @Desc    :   None
 """
@@ -22,7 +22,9 @@ from xy_django_model.model import gen_upload_to
 class MARegion(models.Model):
     id = models.BigAutoField(primary_key=True)
 
-    name = models.CharField(verbose_name=_("名称"), max_length=180, null=True, blank=True)
+    name = models.CharField(
+        verbose_name=_("名称"), max_length=180, null=True, blank=True
+    )
     language = models.CharField(
         verbose_name=_("语言"), max_length=180, null=True, blank=True
     )
@@ -44,7 +46,9 @@ class MARegion(models.Model):
     province_code = models.CharField(
         verbose_name=_("省份代号"), max_length=180, null=True, blank=True
     )
-    city = models.CharField(verbose_name=_("城市"), max_length=180, null=True, blank=True)
+    city = models.CharField(
+        verbose_name=_("城市"), max_length=180, null=True, blank=True
+    )
     address = models.CharField(
         verbose_name=_("地址"), max_length=180, null=True, blank=True
     )
@@ -116,10 +120,16 @@ class MAVersion(models.Model):
     build = models.CharField(
         verbose_name=_("构建版本"), max_length=180, null=True, blank=True
     )
-    create_date = models.DateTimeField(verbose_name=_("版本创造日期"), null=True, blank=True)
-    end_date = models.DateTimeField(verbose_name=_("结束支持日期"), null=True, blank=True)
+    create_date = models.DateTimeField(
+        verbose_name=_("版本创造日期"), null=True, blank=True
+    )
+    end_date = models.DateTimeField(
+        verbose_name=_("结束支持日期"), null=True, blank=True
+    )
     lts = models.BooleanField(verbose_name=_("长期支持"), null=True, blank=True)
-    force_update = models.BooleanField(verbose_name=_("强制更新"), null=True, blank=True)
+    force_update = models.BooleanField(
+        verbose_name=_("强制更新"), null=True, blank=True
+    )
     identifier = models.UUIDField(
         verbose_name=_("内部标识"),
         default=uuid.uuid4,
@@ -170,7 +180,9 @@ class MAVersion(models.Model):
         choices=version_type_choices,
     )
     url = models.URLField(verbose_name=_("版本链接"), null=True, blank=True)
-    download_url = models.URLField(verbose_name=_("版本下载链接"), null=True, blank=True)
+    download_url = models.URLField(
+        verbose_name=_("版本下载链接"), null=True, blank=True
+    )
     install_package = models.FileField(
         verbose_name=_("安装包"), upload_to=install_package_pack, null=True, blank=True
     )
@@ -201,7 +213,9 @@ class MAVersion(models.Model):
 class MADevelopment(models.Model):
     id = models.BigAutoField(primary_key=True)
 
-    name = models.CharField(verbose_name=_("名称"), max_length=180, null=True, blank=True)
+    name = models.CharField(
+        verbose_name=_("名称"), max_length=180, null=True, blank=True
+    )
 
     class Meta:
         abstract = True
@@ -214,7 +228,9 @@ class MADevelopment(models.Model):
 
 class MASystem(models.Model):
     id = models.BigAutoField(primary_key=True)
-    name = models.CharField(verbose_name=_("名称"), max_length=180, null=True, blank=True)
+    name = models.CharField(
+        verbose_name=_("名称"), max_length=180, null=True, blank=True
+    )
     platform = models.CharField(
         verbose_name=_("平台"), max_length=180, null=True, blank=True
     )
@@ -240,7 +256,9 @@ class MASystem(models.Model):
 class MADevice(models.Model):
     id = models.BigAutoField(primary_key=True)
 
-    name = models.CharField(verbose_name=_("名称"), max_length=180, null=True, blank=True)
+    name = models.CharField(
+        verbose_name=_("名称"), max_length=180, null=True, blank=True
+    )
     model = models.CharField(
         verbose_name=_("设备型号"), max_length=180, null=True, blank=True
     )
