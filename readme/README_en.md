@@ -30,16 +30,16 @@ pip install xy_django_app_information
 
 ## How to use
 
-#### 1. 创建Information模块
-> 操作 [样例工程](./samples/xy_web_server_demo/)
+#### 1. Create the Information module
+> Operation [Sample Project](../samples/xy_web_server_demo/)
 
 ```bash
 # bash
 xy_web_server -w django startapp Information
-# Information 模块创建在 source/Runner/Admin/Information 
+# Information Module created in source/Runner/Admin/Information 
 ```
 
-#### 2. 在样例工程中的[settings.py](./samples/xy_web_server_demo/source/Runner/Admin/xy_web_server_demo/settings.py)设置如下
+#### 2. The [settings.py](../samples/xy_web_server_demo/source/Runner/Admin/xy_web_server_demo/settings.py) in the sample project are as follows
 
 ```python
 # settings.py
@@ -59,7 +59,7 @@ INSTALLED_APPS = [
 
 ```
 
-#### 3. 在[Information](./samples/xy_web_server_demo/source/Runner/Admin/Information)模块的[models.py](./samples/xy_web_server_demo/source/Runner/Admin/Information/models.py)文件中加入如下代码
+#### 3. Add the following code to the [models.py](../samples/xy_web_server_demo/source/Runner/Admin/Information/models.py) file of the [Information](../samples/xy_web_server_demo/source/Runner/Admin/Information) module
 
 ```python
 # models.py
@@ -74,7 +74,7 @@ class MRegion(MARegion):
 
 ```
 
-#### 4. 在[Information](./samples/xy_web_server_demo/source/Runner/Admin/Information)模块的[admin.py](./samples/xy_web_server_demo/source/Runner/Admin/Information/admin.py)文件中加入如下代码
+#### 4. Add the following code to the[admin.py](../samples/xy_web_server_demo/source/Runner/Admin/Information/admin.py) file of the [Information](../samples/xy_web_server_demo/source/Runner/Admin/Information) module
 
 ```python
 # admin.py
@@ -87,11 +87,11 @@ class ARegion(admin.ModelAdmin):
 
 ```
 
-#### 5. 运行项目
+#### 5. Run the project
 
 ```bash
 xy_web_server -w django start
-# 启动工程后访问 http://127.0.0.1:8401/admin 验证账户系统
+# After starting the project, visit http://127.0.0.1:8401/admin to verify the information management system
 ```
 
 ##### Run [Sample Project](../samples/xy_web_server_demo)
