@@ -16,7 +16,10 @@ from .abstracts import *
 
 
 class MRegion(MARegion):
+
     class Meta:
+        verbose_name = _("地理位置")
+        verbose_name_plural = _("地理位置")
         app_label = "xy_django_app_information"
 
 
@@ -30,6 +33,8 @@ class MVersion(MAVersion):
     )
 
     class Meta:
+        verbose_name = _("版本")
+        verbose_name_plural = _("版本")
         app_label = "xy_django_app_information"
 
 
@@ -44,6 +49,8 @@ class MDevelopment(MADevelopment):
     )
 
     class Meta:
+        verbose_name = _("开发信息")
+        verbose_name_plural = _("开发信息")
         app_label = "xy_django_app_information"
 
 
@@ -66,6 +73,8 @@ class MSystem(MASystem):
     )
 
     class Meta:
+        verbose_name = _("系统")
+        verbose_name_plural = _("系统")
         app_label = "xy_django_app_information"
 
 
@@ -80,4 +89,6 @@ class MDevice(MADevice):
     )
 
     class Meta:
+        verbose_name = _("设备")
+        verbose_name_plural = _("设备")
         app_label = "xy_django_app_information"
