@@ -59,6 +59,9 @@ INSTALLED_APPS = [
 - ###### 2. 运行项目
 
 ```bash
+xy_web_server -w django makemigrations
+xy_web_server -w django migrate
+# 同步数据表
 xy_web_server -w django start
 # 启动工程后访问 http://127.0.0.1:8401/admin 验证信息管理系统
 ```
@@ -134,6 +137,9 @@ class ARegion(admin.ModelAdmin):
 - ###### 5. 运行项目
 
 ```bash
+xy_web_server -w django makemigrations
+xy_web_server -w django migrate
+# 同步数据表
 xy_web_server -w django start
 # 启动工程后访问 http://127.0.0.1:8401/admin 验证账户管理系统
 ```
