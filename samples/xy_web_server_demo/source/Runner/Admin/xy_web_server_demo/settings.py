@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "Demo",
     "Resource",
     "Media",
+    # "xy_django_app_information",
     "Information",
 ]
 
